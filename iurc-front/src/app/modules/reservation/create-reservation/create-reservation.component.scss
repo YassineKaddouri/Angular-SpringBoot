@@ -1,0 +1,27 @@
+mat-form-field {
+    width: 100% ;
+}
+.form {
+    display:flex;
+    flex-direction:row;
+ }
+ .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+
+ // ::ng-deep .my-dialog-class-css {
+    //mat-dialog-container {
+        //margin: auto;
+     // width: 100%;
+   // }
+//     @media only screen and (max-width: 760px) {
+//          mat-dialog-container{
+//             width: 100%;
+           
+//         }
+//     }
+ //}

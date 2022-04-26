@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<div class="main-div">
+    <mat-card class="relative ring-4 ring-crossdock-primary-500 ring-opacity-50">
+        <mat-card-header>
+            <mat-card-title class="text-2xl mb-4 pl-4 border-l-4 border-crossdock-warn-500 text-crossdock-warn-500" >
+                Inscription
+            </mat-card-title>
+        </mat-card-header>
+        <form  class="user-log" [formGroup]="signupForm" (ngSubmit)="signup()">
+
+            <mat-card-content class="mx-4">
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label >Nom d'utilisateur</mat-label>
+                    <input matInput  type="text" formControlName="username" placeholder="Nom d'utilisateur"
+                    [ngClass]="{ 'is-invalid':  f.username.invalid  &&  f.username.errors && f.username.touched }" name="username">
+                    <mat-error *ngIf="f.username.invalid" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required ">
+                            Nom d'utilisateur est obligatoire 
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label >Nom</mat-label>
+                    <input matInput type="text" 
+                    formControlName="name" 
+                    [ngClass]="{ 'is-invalid':  f.name.invalid  &&  f.name.errors && f.name.touched }" placeholder="Nom" >
+                    <mat-error *ngIf="f.name.invalid" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required ">
+                             Nom est obligatoire
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label >Password</mat-label>
+                    <input matInput type="password"  formControlName="password" class="form-control " placeholder="Mot de passe" name="password"
+                    [ngClass]="{ 'is-invalid':  f.password.invalid  &&  f.password.errors && f.password.touched && f.password.dirty }">
+                    <mat-error *ngIf="f.password.invalid" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required ">
+                            Mot de passe est obligatoire 
+                        </div>
+                        <div *ngIf="f.password.errors.minlength && f.password.errors.pattern">
+                            <p>Le mot de passe doit être au moins de 6 caractères et doit
+                               contenir des minuscules, des majuscules, des chiffres 
+                               et des caractères spéciaux</p>
+                       </div>
+                    </mat-error>
+                   
+                </mat-form-field>
+                <!-- <label>image_Profile</label>
+                <input type="file"  (change)="onChange($event)" /> -->
+            </mat-card-content>
+            <mat-card-actions class="flex justify-center">
+                <button mat-raised-button type="submit" color="warn"
+                    class="text-white px-10 text-lg py-2">Créer un compte</button>
+                  
+            </mat-card-actions>
+            
+             <!-- <mat-card-actions class="flex justify-center">
+           
+                    <button  routerLink="/login" class="text-1xl  flex justify-center text-crossdock-warn-500">Se connecter</button>
+            </mat-card-actions>
+       -->
+       
+               
+
+
+            
+
+        </form>
+
+    </mat-card>
+   <!--<div class="absolute flex w-full h-full top-0 left-0 z-0">
+       
+       
+        <img src="../../../assets/backgrounds/back.svg" class="absolute     left-0 bottom-0 w-full">
+    </div>-->
+    <!-- <div class="absolute flex w-full h-full top-0 left-0 z-0">
+       
+       
+        <img src="../../../assets/images/Group of doctors standing at hospital building.jpg" class="absolute  w-full">
+    </div> -->
+
+
+</div>
+
+</body>
+</html>

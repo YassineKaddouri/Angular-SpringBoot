@@ -1,0 +1,33 @@
+<div class="relative flex justify-between px-10 py-5 items-center">
+    <h1>Ajouter filières à des sites</h1>
+</div>
+<div class="mat-elevation-z4 px-10 py-10 items-center">
+    <form [formGroup]="siteFilForm" (ngSubmit)="submit()">
+        <ng-template matStepLabel>Infos Site</ng-template>
+        <mat-form-field appearance="outline" class="w-100-p">
+            <mat-label >Nom de la site</mat-label>
+            <mat-select 
+                formControlName="site">
+                <mat-option *ngFor="let sites of site" [value]="sites.name">
+                    {{ sites.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="w-100-p">
+            <mat-label >Nom de la filière</mat-label>
+            <mat-select 
+                formControlName="filiers">
+                <mat-option *ngFor="let filiers of filiere" [value]="filiers.name">
+                    {{ filiers.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- <div class="flex gap-4">
+            <button mat-raised-button color="success"  type="submit">Soumettre</button>
+        </div>    -->
+        <div class="flex justify-end">
+            <button mat-flat-button color="primary" class="text-white" type="submit">Soumettre</button>
+        </div>
+    </form>
+</div>

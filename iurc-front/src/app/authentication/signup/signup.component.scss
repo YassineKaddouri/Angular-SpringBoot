@@ -1,0 +1,44 @@
+mat-card{
+  opacity: 0.85;
+}
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //background-image: url("../../../assets/images/Group of doctors standing at hospital building.jpg");
+
+}
+.test{
+   color: blue;
+}
+mat-card:not([class*=mat-elevation-z]) {
+  box-shadow:rgb(172, 154, 232) inset;
+
+}
+body{
+  background-image: url("../../../assets/images/o.jpg");
+  background-position: center center;
+ background-size: cover;
+ width: 100%;
+}
+mat-card{
+  width: 35vh;
+}
+
+.invalid-feedback {
+  color : red;
+  padding-left: 3px;
+
+}
+
+.content {
+  padding-bottom: 50px;
+}
+.form-focus .focus-label {
+    font-size: 13px; 
+}
+.form-control {
+    font-size: 14px !important;
+}
+ 

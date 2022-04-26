@@ -1,0 +1,37 @@
+// .route-icon {
+//     @apply gap;
+// }
+::ng-deep.sidemenu {
+    .mat-list-item-content {
+        @apply flex justify-between w-full;
+    }
+
+    .mat-list-item-disabled {
+        @apply bg-transparent text-gray-500 cursor-not-allowed #{!important};
+
+        .mat-list-item-content {
+            .mat-icon {
+                @apply text-gray-500 #{!important};
+            }
+        }
+    }
+}
+.router-link-active{
+    @apply bg-crossdock-accent-300 text-crossdock-accent-800 #{!important};
+
+    .mat-icon{
+        @apply text-crossdock-accent-800 #{!important};
+    }
+}
+
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+  
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }

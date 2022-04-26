@@ -1,0 +1,32 @@
+<a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}" (click)="expand(item)"
+    [ngClass]="{'expanded': expanded}" class="w-full min-w-full flex justify-between items-center text-crossdock-primary-50"
+    *ngIf="item.hasChildren;else noChildTemplate" [disabled]="item.hasChildren && !item.children || item.children.length == 0">
+    <div class="flex items-center gap-4">
+        <mat-icon class="route-icon text-crossdock-primary-50">{{item.iconName}}</mat-icon>
+        {{ item.displayName  }}
+    </div>
+    <span *ngIf="item.hasChildren" class="text-crossdock-primary-50">
+        <span></span>
+        <mat-icon class="select-none" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+            expand_more
+        </mat-icon>
+    </span>
+</a>
+<ng-template #noChildTemplate>
+    <a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}" [ngClass]="{'expanded': expanded}"
+        class="w-full flex justify-between text-crossdock-primary-50" (click)="formatUrl(item)"
+        [routerLink]="['/'+ formatUrl(item)]" routerLinkActive="router-link-active" #noChildTemplate>
+        <div class="flex items-center gap-4">
+            <mat-icon class="route-icon text-crossdock-primary-50">{{item.iconName}}</mat-icon>
+            {{ item.displayName }}
+        </div>
+    </a>
+</ng-template>
+
+<div *ngIf="expanded">
+    <app-menu-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1" [url]="url">
+    </app-menu-item>
+
+    
+</div>
+

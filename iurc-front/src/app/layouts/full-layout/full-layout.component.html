@@ -1,0 +1,63 @@
+<mat-drawer-container class="h-full w-full bg-gray-50" autosize>
+  <mat-drawer #drawer class="w-80 shadow-md-right bg-crossdock-primary-500" mode="side" opened="true">
+    <div class="flex flex-col justify-center items-center my-12 user" *ngIf="user$ | async as user">
+
+      <!-- A changer!! -->
+      <div class="w-24 h-24 rounded-full picture">
+        <img id="showImage" class=" w-40 items-center border rounded-full mx-auto " [src]="user.image"
+          alt="">
+      </div>
+      <!-- We can Add A logo or smthg -->
+      <!-- <div class="w-24 h-24 bg-crossdock-warn-500 rounded-full picture"></div>-->
+      <p class="text-white text-3xl mt-4 name">{{ user.name }} </p>
+      <div class="flex flex-col divide-y items-center border-gray-600 data">
+        <p class="text-gray-300 text-sm mb-0">{{ user.username }}</p>
+        <!--<p class="text-gray-300 text-sm">{{ user.email }}</p>-->
+      </div>
+    </div>
+    <app-sidebar [navItems]="navItems" [url]="url"></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content class="bg-crossdock-primary-50">
+    <mat-toolbar class="bg-crossdock-accent-50 shadow-md">
+      <div class="flex justify-between w-full">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <!-- < class="flex gap-4">
+          <sk-toolbar-language ></sk-toolbar-language>-->
+        <app-toolbar-profile [user]="user$ | async" (logout)="logout()"></app-toolbar-profile>
+
+
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<!-- <div class="absolute flex w-full h-full top-0 left-0  z-50" *ngIf="isIdle">
+
+  <mat-card class="w-1/5 m-auto z-10 relative ring-4 ring-crossdock-warn-500 ring-opacity-50">
+    <mat-card-header>
+      <mat-card-title class="text-2xl mb-4 pl-4 border-l-4 border-crossdock-warn-500 text-crossdock-warn-500" translate>
+        IDLE.TITLE
+      </mat-card-title>
+    </mat-card-header>
+    <div class="flex justify-center items-center">
+      <button mat-raised-button type="button" (click)="toggleIdle()" color="primary"
+        class="text-white px-10 text-lg py-2">
+      </button>
+    </div>
+  </mat-card>
+
+  <div class="absolute flex w-full h-full top-0 left-0 ">
+    <div class="bg-crossdock-accent-50 w-1/2 h-full flex justify-center">
+      <div class="font-bold text-8xl mt-24 text-crossdock-primary-600">
+
+      </div>
+    </div>
+    <div class="bg-crossdock-primary-900 w-1/2 h-full flex justify-center items-start">
+      <img src="../../../assets/logos/logo.svg" class="w-1/2 mt-24 bg-white p-6 rounded-lg">
+    </div>
+    <img src="../../../assets/backgrounds/back.svg" class="absolute     left-0 bottom-0 w-full">
+  </div>
+</div> -->

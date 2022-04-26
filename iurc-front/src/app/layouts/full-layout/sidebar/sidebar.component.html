@@ -1,0 +1,15 @@
+<mat-nav-list class="sidemenu">
+    <div *ngFor="let item of navItems">
+             <app-menu-item *ngIf="item.children.length > 0" [item]="item" [url]="url"></app-menu-item>
+    </div>
+    
+        <a mat-list-item 
+            class="w-full flex justify-between text-crossdock-primary-50" 
+            routerLink="/signup" >
+            <div class="flex items-center gap-4">
+                <mat-icon class="route-icon text-crossdock-primary-50">person_add</mat-icon>
+               Inscription
+            </div>
+        </a>
+        <!-- *ngIf="isAdmin" -->
+</mat-nav-list>

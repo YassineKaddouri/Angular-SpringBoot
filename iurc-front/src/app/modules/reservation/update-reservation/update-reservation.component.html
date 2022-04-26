@@ -1,0 +1,40 @@
+<h1 mat-dialog-title> Mise a jour Reservarion</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="reservationForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Date Debut</mat-label>
+      <input [matDatepicker]="pickerD" formControlName="dateDebut" matInput placeholder="date Debut" >
+      <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
+      <mat-datepicker #pickerD></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date Fin</mat-label>
+      <input [matDatepicker]="pickerF" formControlName="dateFin" matInput placeholder="date Fin">
+      <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
+      <mat-datepicker #pickerF></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Patient</mat-label>
+      <mat-select formControlName="patient" placeholder="patient">
+        <mat-option *ngFor="let patient of patients" [value]="patient.id">
+          {{ patient.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> 
+   <mat-form-field appearance="outline">
+      <mat-label>UF</mat-label>
+      <mat-select formControlName="uf" placeholder="uf">
+        <mat-option *ngFor="let uf of ufs" [value]="uf.id">
+          {{ uf.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="updateReservation()">{{actionBtn}}</button>
+</div>

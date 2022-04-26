@@ -1,0 +1,28 @@
+<p>update-patient works!</p>
+<h1 mat-dialog-title> Modfier</h1>
+<form >
+<div mat-dialog-content>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput placeholder="Nom" id="nom"
+      [(ngModel)]="data.name"  name="nomd">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Prenom</mat-label>
+      <input matInput placeholder="prenom" id="prenom"
+      [(ngModel)]="data.username" name="p" >
+    </mat-form-field>
+    <input type="file"  (change)="onChange($event)" enctype="multipart/form-data" multiple/>
+</div>
+<div mat-dialog-action [align]="'end'">
+ 
+  <button style mat-raised-button color="primary" class="o" (click)="onSubmit()" >Modifier</button>
+  <button mat-raised-button color="warn" mat-dialog- (click)="onNoClick()" >Fermer</button>
+</div>
+
+</form>
+<div mat-dialog-action [align]="'end'">
+  
+ 
+</div>

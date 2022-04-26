@@ -1,0 +1,16 @@
+<h1 mat-dialog-title> Ajouter Role</h1>
+
+<div mat-dialog-content>
+   <form [formGroup]="roleForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="role.name" formControlName="name" matInput placeholder="Nom">
+    </mat-form-field>
+
+
+   </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addSite()">{{actionBtn}}</button>
+</div>

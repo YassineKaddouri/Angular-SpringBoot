@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  /*td, th {
+    width: 25%;
+  }*/
+  .container{
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+  .example-button-row button,
+  .example-button-row a {
+    margin-right: 8px;
+  }
+  
+  .mat-success {
+    background-color: rgb(204, 197, 197);
+    color: #000;
+  }

@@ -1,0 +1,98 @@
+
+<h1 mat-dialog-title>  Ajouter Patient</h1>
+  <form [formGroup]="patientForm">
+<div mat-dialog-content >
+    <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Nom" id="nom"
+        [(ngModel)]="patient.nom" formControlName="nom" name="nomd" required
+         [ngClass]="{ 'is-invalid':  patientForm.get('nom').invalid  &&  patientForm.get('nom').errors && patientForm.get('nom').touched }" >
+        <mat-error *ngIf="patientForm.get('nom').invalid" class="invalid-feedback">
+          <div *ngIf="patientForm.get('nom').errors.required ">
+            Ce champs est obligatoire
+          </div>
+      </mat-error>
+        <!-- <!-- <mat-hint style="color:brown;" *ngIf="patientForm.get('nom').touched &&patientForm.get('nom').errors?.required">
+    
+          Ce champs est obligatoire
+
+        </mat-hint> -->
+      </mat-form-field> 
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Prenom</mat-label>
+        <input matInput placeholder="prenom" id="prenom"
+        [(ngModel)]="patient.prenom" formControlName="prenom" name="p" required [ngClass]="{ 'is-invalid':  patientForm.get('prenom').invalid  &&  patientForm.get('nom').errors && patientForm.get('nom').touched }" >
+        <mat-error *ngIf="patientForm.get('prenom').invalid" class="invalid-feedback">
+          <div *ngIf="patientForm.get('prenom').errors.required ">
+            Ce champs est obligatoire
+          </div>
+      </mat-error>
+        <!-- <mat-error style="color:brown;" *ngIf="patientForm.get('prenom').touched && patientForm.get('prenom').errors?.required">
+    
+          Ce champs est obligatoire
+
+        </mat-error> -->
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Choisir une date</mat-label>
+        <input matInput [matDatepicker]="picker"  id="dateNessance" [(ngModel)]="patient.dateNessance"  formControlName="dateNessance" name ="dateNessanced" required
+        
+        [ngClass]="{ 'is-invalid':  patientForm.get('dateNessance').invalid  &&  patientForm.get('dateNessance').errors && patientForm.get('dateNessance').touched }" >
+        <mat-error *ngIf="patientForm.get('dateNessance').invalid" class="invalid-feedback">
+          <div *ngIf="patientForm.get('dateNessance').errors.required ">
+            Ce champs est obligatoire
+          </div>
+      </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- <mat-error style="color:brown;" *ngIf="patientForm.get('dateNessance').touched && patientForm.get('dateNessance').errors?.required">
+    
+          Ce champs est obligatoire
+
+        </mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Adresse" id="adresse"
+        [(ngModel)]="patient.adresse" formControlName="adresse"  name="adresseff" required 
+        [ngClass]="{ 'is-invalid':  patientForm.get('adresse').invalid  &&  patientForm.get('adresse').errors && patientForm.get('adresse').touched }" >
+        <mat-error *ngIf="patientForm.get('adresse').invalid" class="invalid-feedback">
+          <div *ngIf="patientForm.get('adresse').errors.required ">
+            Ce champs est obligatoire
+          </div>
+      </mat-error>
+        <!-- <mat-hint style="color:brown;" *ngIf="patientForm.get('adresse').touched &&patientForm.get('adresse').errors?.required">
+    
+          Ce champs est obligatoire
+
+        </mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>telephone</mat-label>
+        <input matInput placeholder="telephone" id="telephone"
+        [(ngModel)] = "patient.telephone" formControlName="telephone" name="telephone" required
+        [ngClass]="{ 'is-invalid':  patientForm.get('telephone').invalid  &&  patientForm.get('telephone').errors && patientForm.get('telephone').touched }" >
+        <mat-error *ngIf="patientForm.get('telephone').invalid" class="invalid-feedback">
+          <div *ngIf="patientForm.get('telephone').errors.required ">
+            Ce champs est obligatoire
+          </div>
+      </mat-error>
+        <!-- <mat-hint style="color:brown;" *ngIf="patientForm.get('telephone').touched &&patientForm.get('telephone').errors?.required">
+    
+          Ce champs est obligatoire
+
+        </mat-hint> -->
+      </mat-form-field>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog- (click)="onNoClick()"  >Fermer</button>
+  <button style mat-raised-button color="primary" (click)="onSubmit()" >Enregistrer</button>
+ 
+</div>
+
+ 
+ 
+
+</form>

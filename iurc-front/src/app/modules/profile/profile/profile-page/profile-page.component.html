@@ -1,0 +1,31 @@
+<button mat-icon-button color="primary" (click)="open()">
+    <mat-icon>edit</mat-icon>
+</button>
+<div class="relative flex items-center">
+    <div class=" w-screen mt-24 flex justify-center  bg-gray-50 ">
+        <div class="border-b-2 block ">
+            <div class="w-full   p-4 sm:p-6 lg:p-8  shadow-md-right">
+                <div class=" pt-8 justify-center mb-4">
+                    <span class="text-xl  block font-semibold mx-8 text-gray-500 flex justify-between">Profile</span>
+                </div>
+                <div class="w-full h-full p-8 mx-2 flex justify-center">
+                    <img id="showImage" class=" w-80 items-center border rounded-full mx-auto "
+                        [src]="user.image" alt="">
+                </div>
+                <div class="w-full md:w-4/5 p-8 bg-white lg:ml-4  mt-25 shadow-md">
+                    <div class="grid md:grid-cols-2 text-sm">
+                        <div class="grid grid-cols-2">
+                            <div class="px-6 py-2 font-semibold text-gray-500">FirstName:</div>
+                            <div class="px-8 py-2">{{user.name}}</div>
+
+                            <div class="px-6 py-2 font-semibold text-gray-500">LastName:</div>
+                            <div class="px-8 py-2">{{user.username}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

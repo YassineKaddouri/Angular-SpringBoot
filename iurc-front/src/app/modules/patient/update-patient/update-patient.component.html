@@ -1,0 +1,48 @@
+<p>update-patient works!</p>
+<h1 mat-dialog-title> Modfier</h1>
+<form  >
+<div mat-dialog-content>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput placeholder="Nom" id="nom"
+      [(ngModel)]="patient.nom"  name="nomd">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Prenom</mat-label>
+      <input matInput placeholder="prenom" id="prenom"
+      [(ngModel)]="patient.prenom" name="p" >
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker"  id="dateNessance" [(ngModel)]="patient.dateNessance" name ="dateNessanced" >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Adresse" id="adresse"
+      [(ngModel)]="patient.adresse" name="adresseff">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>telephone</mat-label>
+      <input matInput placeholder="telephone" id="telephone"
+      [(ngModel)] = "patient.telephone" name = "telephone">
+    </mat-form-field>
+
+</div>
+<div mat-dialog-action [align]="'end'">
+ 
+  <button style mat-raised-button color="primary" class="o" (click)="onSubmit()" >Modifier</button>
+  <button mat-raised-button color="warn" mat-dialog- (click)="onNoClick()" >Fermer</button>
+</div>
+
+</form>
+<div mat-dialog-action [align]="'end'">
+  
+ 
+</div>

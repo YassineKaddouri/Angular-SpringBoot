@@ -1,0 +1,63 @@
+<h1 mat-dialog-title> Ajouter Reservarion</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="reservationForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Date Debut</mat-label>
+      <input [matDatepicker]="pickerD" formControlName="dateDebut" matInput placeholder="date Debut" 
+       [ngClass]="{ 'is-invalid':  reservationForm.get('dateDebut').invalid  &&  reservationForm.get('dateDebut').errors && reservationForm.get('dateDebut').touched }" >
+      <mat-error *ngIf="reservationForm.get('dateDebut').invalid" class="invalid-feedback">
+        <div *ngIf="reservationForm.get('dateDebut').errors.required ">
+             Date est obligatoire
+        </div>
+    </mat-error>
+      <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
+      <mat-datepicker #pickerD></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Date Fin</mat-label>
+      <input [matDatepicker]="pickerF" formControlName="dateFin" matInput placeholder="date Fin" 
+      [ngClass]="{ 'is-invalid':  reservationForm.get('dateFin').invalid  &&  reservationForm.get('dateFin').errors && reservationForm.get('dateFin').touched }" >
+      <mat-error *ngIf="reservationForm.get('dateFin').invalid" class="invalid-feedback">
+        <div *ngIf="reservationForm.get('dateFin').errors.required">
+             Date est obligatoire
+        </div>
+    </mat-error>
+      <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
+      <mat-datepicker #pickerF></mat-datepicker>
+    </mat-form-field>
+    <div class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Patient</mat-label>
+      <mat-select [(ngModel)]="selectedPatient" formControlName="patient" placeholder="patient" >
+        <mat-option *ngFor="let patient of patients" [value]="patient.id">
+          {{ patient.nom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> 
+    <div class="example-flex-container">
+      <button mat-mini-fab color="accent"  (click)="openDialogg()"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Filiers</mat-label>
+    <mat-select formControlName="filier" placeholder="filier" (selectionChange)="onFilierSelected()">
+      <mat-option *ngFor="let fil of filieres" [value]="fil['id']">
+        {{ fil['name'] }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> 
+   <mat-form-field appearance="outline">
+      <mat-label>UF</mat-label>
+      <mat-select formControlName="uf" placeholder="uf">
+        <mat-option *ngFor="let uf of ufs" [value]="uf.id">
+          {{ uf.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addReservation()">{{actionBtn}}</button>
+</div>
