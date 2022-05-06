@@ -4,7 +4,7 @@ import { navigationUid } from "src/app/shared/utils/navigation.utils";
 export const UF_NAVIGATION: NavItem[] = [
     {
         id: navigationUid(),
-        displayName: 'uf',
+        displayName: 'UF',
         route: "uf",
         iconName: "airline_seat_individual_suite",
         hasChildren: true,

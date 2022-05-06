@@ -4,6 +4,7 @@ export interface NavItem {
     disabled?: boolean;
     iconName: string;
     route?: string;
+    router?:string;
     prefixes?: string[];
     hasChildren?: boolean;
     children?: NavItem[];

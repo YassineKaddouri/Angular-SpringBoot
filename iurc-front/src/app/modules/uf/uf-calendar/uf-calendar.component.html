@@ -1,0 +1,20 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Patient</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let i of data.listPatient; let index=index">
+            <td>{{data.occupation[index].dateDebut |date : 'dd/MM/yyyy'}}</td>
+            <td>{{data.occupation[index].dateFin |date : 'dd/MM/yyyy'}}</td>
+            <td>{{i.nom}}{{i.prenom}}</td>
+        </tr>
+
+
+
+    </tbody>
+</table>

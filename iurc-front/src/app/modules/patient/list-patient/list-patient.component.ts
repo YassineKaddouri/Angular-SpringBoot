@@ -42,10 +42,6 @@ export class ListPatientComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-  
-        console.log(res);
-      
-  
       },
       error:(err) =>{
         alert("Erreur lors de télécharger les données!!")
@@ -64,10 +60,9 @@ export class ListPatientComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(CreatePatientComponent, {
-     // width: '30%'
-     panelClass: 'my-dialog-class-css'
+      width: '30%'
     }).afterClosed().subscribe(val=>{        
-      if(val){
+      if(val == 'enregistrer'){
         this.getPatient();
       }
     })

@@ -45,13 +45,14 @@ public class PatientController {
 
     }
 
-
     //build create patient REST API
     @PostMapping("/save")
     public ResponseEntity<Patient> savePatient(@RequestBody Patient patient){
         return new ResponseEntity<Patient>(patientService.savePatient(patient) , HttpStatus.CREATED);
 
     }
+
+
 
 
     //ById
@@ -63,8 +64,6 @@ public class PatientController {
 
 
     }
-
-
 
     //Update
     @PutMapping("/patients/{id}")

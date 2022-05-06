@@ -54,11 +54,10 @@ public class UfController {
         List<UF> all = ufService.getUfs();
         List<UfDto> allDTO = all.stream().map(
                 (i) -> {
-                    return mappingService.mapUfDFromByUfWithoutFiliere(i);
+                    return mappingService.mapUfDFromByUf(i); // return mappingService.mapUfDFromByUfWithoutFiliere(i);
                 }
         ).collect(Collectors.toList());
         return allDTO;
-
     }
 
     @Transactional
@@ -68,6 +67,14 @@ public class UfController {
         UF UFCreated = ufService.saveUf(UF);
         return ResponseEntity.ok().body(selmaMapper.ufToUfDto(UFCreated));
     }
+
+
+//    @Transactional
+//    @PostMapping("/save1/{id}")
+//    public void saveUF1(@RequestBody UfDto ufDto, @PathVariable long id) {
+//        UF UF = selmaMapper.ufDtoToUf(ufDto);
+//        ufService.saveUf1(UF, id);
+//    }
 
     @Transactional
     @PutMapping(value = "update/{id}")
@@ -83,7 +90,7 @@ public class UfController {
         ufService.delete(id);
     }
 
-    //    private UfDto mapUfDFromByUf(UF uf) {
+//    private UfDto mapUfDFromByUf(UF uf) {
 //
 //        return new UfDto().ufDtoBuilder()
 //                .name(uf.getName())
@@ -113,8 +120,9 @@ public class UfController {
 //        ufs.forEach(u -> ufsDto.add(mapUfDFromByUfWithoutFiliere(u)));
 //        return ufsDto;
 //    }
+
     @GetMapping("/detail")
-    public List<ReservationDto> ufDetails(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
+    public List<ReservationDto> ufDetails(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd") Date date) {
         List<Reservation> ufs = ufService.getUfReservation(date);
         List<ReservationDto> allDTO = ufs.stream().map(
                 (i) -> {
@@ -134,9 +142,34 @@ public class UfController {
         ).collect(Collectors.toList());
         return allDTO;
     }
+
+    @PostMapping("/status")
+    public List<?> getUfStatus(@RequestBody Condition critiers) {
+        List<Reservation> ufs = ufService.getStatus(critiers.getDateDebut(), critiers.getDateFin());
+        List<ReservationDto> allDTO = ufs.stream().map(
+                (i) -> {
+                    return mappingService.mapReservationDFromReservation(i);
+                }
+        ).collect(Collectors.toList());
+        return allDTO;
+    }
+
+    @GetMapping("/status1")
+    public List<?> getUfStatus1(@RequestParam(required = false, value = "dateDebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd") Date dateDebut,
+                                @RequestParam(required = false, value = "dateFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd") Date dateFin) {
+        log.info("", dateDebut);
+        List<Reservation> ufs = ufService.getStatus(dateDebut, dateFin);
+        List<ReservationDto> allDTO = ufs.stream().map(
+                (i) -> {
+                    return mappingService.mapReservationDFromReservation(i);
+                }
+        ).collect(Collectors.toList());
+        return allDTO;
+    }
+
     @GetMapping("/uf_filier/{idFilier}")
-    public List<UfDto> ufFiliere(@PathVariable long idFilier){
-        List<UF> ufs =  ufService.getUfFilier(idFilier);
+    public List<UfDto> ufFiliere(@PathVariable long idFilier) {
+        List<UF> ufs = ufService.getUfFilier(idFilier);
         List<UfDto> allDTO = ufs.stream().map(
                 (i) -> {
                     return mappingService.mapUfDFromByUfWithoutFiliere(i);
@@ -144,11 +177,25 @@ public class UfController {
         ).collect(Collectors.toList());
         return allDTO;
     }
+
+    @GetMapping("/countUF/{id}")
+    public int countUf(@PathVariable long id, @RequestParam(required = false, value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd") Date date) {
+        return ufService.countUfReservation(id, date);
+    }
+
+    @GetMapping("/countPatient/{id}")
+    public int countPatient(@PathVariable long id, @RequestParam(required = false, value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd") Date date) {
+        return ufService.countPatientReservation(id, date);
+    }
+
+
 }
 
 @Data
-class Critiers {
-    private Date date;
+class Condition {
+    private Date dateDebut;
+    private Date dateFin;
+
 }
 
 

@@ -1,5 +1,5 @@
-<button mat-raised-button [matMenuTriggerFor]="menu" color="warn">
-  <div class="flex items-center gap-2 p-1">
+<button mat-raised-button [matMenuTriggerFor]="menu" style="background-color: #c3423d;">
+  <div class="flex items-center gap-2 p-1 " style="color: white;">
     <span class="material-icons">account_circle</span>
     <!--<div class="w-8 h-8 rounded-full bg-red-500"></div>-->
     <div>{{user.username}}</div>
@@ -8,7 +8,7 @@
 <mat-menu #menu="matMenu" xPosition="before" class="bg-moenn-primary-50">
   <button mat-menu-item>
     <div class="flex items-center" routerLink="/profile/show">
-      <mat-icon>person</mat-icon>
+      <mat-icon >person</mat-icon>
       <span>Profile</span>
     </div>
   </button>

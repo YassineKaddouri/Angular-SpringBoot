@@ -14,7 +14,7 @@ export class PatientService {
  /*getSite(id: number): Observable<Site> {
     return this.http.get<Site>(`${this.baseUrl1}/${id}`);
   }*/
-  //private baseURL :string = "http://localhost:8080/patient";
+  //private baseURL :string = "patient";
   createPatient(patient: Object): Observable<Object> {
     return this.http.post(`${this.links.PATIENT_ADD_LINK}`,patient);
   }

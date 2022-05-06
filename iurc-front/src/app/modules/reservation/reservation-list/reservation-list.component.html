@@ -1,5 +1,5 @@
 <div class="flex justify-between px-10 py-5 items-center">
-  <h1 >Infos Reservation</h1>
+  <h1 > <span style="font-size: 150%;">| </span> Liste Reservation</h1>
   <div class="flex gap-4">
       <!-- <mat-form-field appearance="outline" class="search-form-field">
           <input matInput [placeholder]=" 'AGENCIES.LIST_PAGE.SEARCH' | translate" [formControl]="searchControl">
@@ -8,53 +8,53 @@
 
 <!--      <button mat-raised-button color="success" routerLink="/site/add">Ajouter</button>-->
 
-      <button mat-raised-button color="success" (click)="openDialog()">Ajouter</button>
+<button mat-raised-button   (click)="openDialog()" style="background-color:#184a73;" ><span style="color: white;">Ajouter</span></button>
       <!--<a mat-mini-fab color="success" routerLink=".">link</a>-->
   </div>
 </div>
-<mat-form-field appearance="fill">
 
-    <mat-label>Chercher</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Reservation" #input>
+  <mat-form-field  style="width: 15rem" floatLabel="auto">
+    <mat-label><mat-icon style="font-size: 15px;">search</mat-icon>Chercher</mat-label>
+    
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Reservation"  #input>
   </mat-form-field>
-  
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
   
       <!-- ID Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark"> ID </th>
+        <td mat-cell *matCellDef="let row" class="text-dark"> {{row.id}} </td>
       </ng-container>
   
      
   
       <!-- Date debut Column -->
       <ng-container matColumnDef="date_debut">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date debut </th>
-        <td mat-cell *matCellDef="let row"> {{row.dateDebut | date:"dd/MM/yyyy HH:mm"}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark"> Date debut </th>
+        <td mat-cell *matCellDef="let row" class="text-dark"> {{row.dateDebut | date:"dd/MM/yyyy HH:mm"}} </td>
       </ng-container>
   
       <!-- Date fin Column -->
       <ng-container matColumnDef="date_fin">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date fin </th>
-        <td mat-cell *matCellDef="let row"> {{row.dateFin | date:"dd/MM/yyyy HH:mm"}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark"> Date fin </th>
+        <td mat-cell *matCellDef="let row" class="text-dark"> {{row.dateFin | date:"dd/MM/yyyy HH:mm"}} </td>
       </ng-container>
 
       <!-- Patient Column -->
       <ng-container matColumnDef="patient">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient </th>
-          <td mat-cell *matCellDef="let row"> {{row.patient.nom}} {{row.patient.prenom}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark"> Patient </th>
+          <td mat-cell *matCellDef="let row" class="text-dark"> {{row.patient.nom}} {{row.patient.prenom}} </td>
        
         </ng-container>
        
       <!-- Uf Column -->
       <ng-container matColumnDef="uf">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> UF </th>
-          <td mat-cell *matCellDef="let row"> {{row.uf.name}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header  class="text-dark"> UF </th>
+          <td mat-cell *matCellDef="let row" class="text-dark"> {{row.uf.name}}</td>
         </ng-container>
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <ng-container matColumnDef="action" class="text-dark">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header  class="text-dark"> Action </th>
         <td mat-cell *matCellDef="let row"> 
             <button mat-icon-button (click)="editReservation(row)" color="primary">
                 <mat-icon>edit</mat-icon>

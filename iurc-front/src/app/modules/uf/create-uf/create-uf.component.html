@@ -5,28 +5,19 @@
    <form [formGroup]="ufForm">
     <mat-form-field appearance="outline">
       <mat-label>Nom de l'unité fonctionnelle</mat-label>
-      <input formControlName="name" matInput placeholder="Nom" required
-        [ngClass]="{ 'is-invalid':  ufForm.get('name').invalid  &&  ufForm.get('name').errors && ufForm.get('name').touched }" >
-        <mat-error *ngIf="ufForm.get('name').invalid" class="invalid-feedback">
-          <div *ngIf="ufForm.get('name').errors.required ">
-            Ce champs est obligatoire
-          </div>
-      </mat-error>
-      
+      <input formControlName="name" matInput placeholder="Nom">
     </mat-form-field>
-    
-  
+    <mat-form-field appearance="outline">
+      <mat-label>Filiere</mat-label>
+      <mat-select formControlName="filiere" placeholder="filiere">
+        <mat-option *ngFor="let filiere of filiers" [value]="filiere.id">
+          {{ filiere.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
    </form>
-   <mat-form-field appearance="outline">
-    <mat-label>Filiers</mat-label>
-    <mat-select formControlName="filier" placeholder="filier">
-      <mat-option *ngFor="let fil of filieres" [value]="fil['id']">
-        {{ fil['name'] }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> 
 </div>
 <div mat-dialog-action [align]="'end'">
   <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
-  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addSite()">{{actionBtn}}</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addUF()">{{actionBtn}}</button>
 </div>

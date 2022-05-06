@@ -14,19 +14,18 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileRoutingModule } from './profile-routing.module';
-import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
+// import { ProfileComponent } from './profile/profile.component';
+// import { ProfileRoutingModule } from './profile-routing.module';
+// import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
 import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    ProfilePageComponent
+  
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
+  //  ProfileRoutingModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,

@@ -5,6 +5,8 @@
 @import "tailwindcss/utilities";
 @import '~ngx-toastr/toastr';
 @import "./assets/styles/material-theme.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+
 html,
 body {
     height: 100%;

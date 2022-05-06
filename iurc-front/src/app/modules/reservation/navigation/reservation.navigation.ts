@@ -14,7 +14,7 @@ export const RESERVTION_NAVIGATION: NavItem[] = [
                 displayName: 'Liste',
                 route: "list",
                 iconName: "list",
-                  requiredRole: "Admin",
+                //   requiredRole: "Admin",
             },
            /* {
                 id: navigationUid(),

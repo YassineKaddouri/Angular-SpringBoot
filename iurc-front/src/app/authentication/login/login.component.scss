@@ -9,6 +9,17 @@ mat-card{
     //background-image: url("../../../assets/images/Group of doctors standing at hospital building.jpg");
  
   }
+//   @supports (display: flex) {
+//    @media screen and (min-width: 900px) {
+//       .main-div {
+//        display: flex;
+//        height: 100vh;
+//        display: flex;
+//        justify-content: center;
+//        align-items: center;
+//      }
+//    }
+//  }
   .test{
      color: blue;
   }
@@ -23,5 +34,5 @@ mat-card{
    width: 100%;
  }
  mat-card{
-    width: 35vh;
+     width: 38vh;
  }

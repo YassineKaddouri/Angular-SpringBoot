@@ -100,6 +100,7 @@ public CustomUserDetails(Long id, String username, String password,
     public String getUsername() {
         return username;
     }
+
     public String getImage() {
         return image;
     }

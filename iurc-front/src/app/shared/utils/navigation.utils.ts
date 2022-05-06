@@ -47,11 +47,14 @@ function getNavItem(navItem: NavItem, id: number) {
 // export function filterByRoles(navItems: NavItem[], roles: string[]) : NavItem[] {
 //     let navItemsToRegister: NavItem[] = 
 //     navItems.filter(res=> {
-//         if(localStorage.getItem('roles') === 'User' && res.route !== 'filiere') {
+//         if(localStorage.getItem('roles') === 'User' && res.route !== 'filiere' && res.route !== 'patient') {
+            
 //             return true
+            
 //         }else if(localStorage.getItem('roles') === 'Admin'){
 //             return true
 //         }
+//        // this.router.navigate(['/']);
 //         return false;
 //     })
 //     navItemsToRegister = navItemsToRegister.map(nv => filterChildrenByRoles(nv, roles));

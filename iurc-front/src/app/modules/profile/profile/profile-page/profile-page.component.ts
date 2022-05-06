@@ -25,6 +25,7 @@ export class ProfilePageComponent implements OnInit {
 
   open() {
     this.dialog.open(ModifierProfileComponent, {
+      panelClass: 'my-dialog-class-css',
       data : {...this.user},
       width: '30%',
     })

@@ -73,8 +73,19 @@ public class UfService {
     public List<UF> getUfDisponible(Date date) {
         return ufRepository.getUfDisponible(date);
     }
+    public List<Reservation> getStatus(Date dateDebut, Date dateFin) {
+        return ufRepository.getStatus(dateDebut, dateFin);
+    }
+
     public List<UF> getUfFilier(long idFilier) {
         return ufRepository.getUfFiliere(idFilier);
     }
 
+    public int countUfReservation(long id, Date dateD) {
+        return ufRepository.countUfReservation(id, dateD);
+    }
+
+    public int countPatientReservation(long id, Date dateD) {
+        return ufRepository.countPatientReservation(id, dateD);
+    }
 }

@@ -1,100 +1,111 @@
 <div class="flex justify-between px-10 py-5 items-center">
-  <h1 >Infos Uf</h1>
- 
-  <button mat-raised-button color="success" >Chercher</button>
-  <mat-form-field appearance="fill" class="yes">
-    <mat-label>Date Debut</mat-label>
-    <input [matDatepicker]="pickerD"  matInput placeholder="date Debut" [(ngModel)]="selectedDate" (ngModelChange)="checkDate($event)">
+  <h1>Infos Uf</h1>
+  <mat-form-field  class="yes">
+    <mat-label>Date Entrée</mat-label>
+    <input [matDatepicker]="pickerD" matInput placeholder="date Debut" [(ngModel)]="selectedDate"
+      (ngModelChange)="checkDate($event)">
     <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
     <mat-datepicker #pickerD></mat-datepicker>
   </mat-form-field>
-  <mat-form-field appearance="fill" class="yes">
-    <mat-label>Date sortie</mat-label>
-    <input [matDatepicker]="pickerD"  matInput placeholder="date Debut" [(ngModel)]="selectedDate" (ngModelChange)="checkDate($event)">
-    <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
-    <mat-datepicker #pickerD></mat-datepicker>
+  <mat-form-field  class="yes1">
+    <mat-label>Date Sortie</mat-label>
+    <input [matDatepicker]="pickerF" matInput placeholder="date Fin" [(ngModel)]="selectedOutDate">
+    <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
+    <mat-datepicker #pickerF></mat-datepicker>
   </mat-form-field>
-
   <div class="flex gap-4">
-      <!-- <mat-form-field appearance="outline" class="search-form-field">
-          <input matInput [placeholder]=" 'AGENCIES.LIST_PAGE.SEARCH' | translate" [formControl]="searchControl">
-          <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field> -->
-
-<!--      <button mat-raised-button color="success" routerLink="/uf/add">Ajouter</button>-->
-
-      <button mat-raised-button color="success" (click)="openDialog()">Ajouter</button>
-      <!--<a mat-mini-fab color="success" routerLink=".">link</a>-->
+    <button mat-raised-button color="success" (click)="getStatus()">
+      <mat-icon>search</mat-icon> 
+    </button>
+    <button mat-raised-button   (click)="openDialog()" style="background-color:#184a73;" ><span style="color: white;">Ajouter</span></button>
+    <!--<a mat-mini-fab color="success" routerLink=".">link</a>-->
   </div>
 </div>
-<mat-form-field appearance="standard">
 
-    <mat-label>rechercher</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Uf" #input>
-  </mat-form-field>
-  <!-- <mat-form-field appearance="outline">
-    <mat-label>Date Debut</mat-label>
-    <input [matDatepicker]="pickerD"  matInput placeholder="date Debut" [(ngModel)]="selectedDate " (ngModelChange)="checkDate($event)">
-    <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
-    <mat-datepicker #pickerD></mat-datepicker>
-  </mat-form-field> -->
-  <div class="mat-elevation-z8">
-    <table class="table-primary" mat-table [dataSource]="dataSource" matSort style="border-radius: 10px;">
+<mat-form-field  style="width: 15rem" floatLabel="auto">
+  <mat-label><mat-icon style="font-size: 15px;">search</mat-icon>Chercher</mat-label>
   
-      <!-- ID Column -->
-      <ng-container matColumnDef="id" >
-        <th  mat-header-cell *matHeaderCellDef mat-sort-header > ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-      </ng-container>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Uf" #input  >
   
-     
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th  mat-header-cell *matHeaderCellDef mat-sort-header class="text-center" > Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-      </ng-container>
+</mat-form-field>
 
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let row"  [ngStyle]="{'background-color': row.color}"> {{row.status}}</td>
-      </ng-container>
-      <ng-container matColumnDef="patient">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patients </th>
-        <td mat-cell *matCellDef="let row">
-          <!-- <ul *ngFor="let i of row.idReservation">
-            <li>
-              {{row.idReservation.Patient}}
-            </li>
-          </ul> -->
-        <!-- {{row.patient.nom + ' ' + row.patient.prenom}} -->
-          <p *ngIf="row.patient">
-            {{row.patient.nom + ' ' + row.patient.prenom}}
-          </p>
-        </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <td mat-cell *matCellDef="let row"> 
-            <button mat-icon-button (click)="editUf(row)" color="primary">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button (click)="deleteUf(row.id)" mat-icon-button color="accent">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">Aucune résultat pour vos recherche "{{input.value}}"</td>
-      </tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users" style="font-size: 15px;"></mat-paginator>
-  </div>
-  
+<mat-form-field  class="x"  style="width: 15rem">
+  <mat-label>Date Sortie</mat-label>
+  <input [matDatepicker]="pickerF" matInput placeholder="date Fin" [(ngModel)]="selectedOutDate">
+  <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
+  <mat-datepicker #pickerF></mat-datepicker>
+</mat-form-field>
+<mat-form-field  class="x"  style="width: 15rem">
+  <mat-label>Date Sortie</mat-label>
+  <input [matDatepicker]="pickerF" matInput placeholder="date Fin" [(ngModel)]="selectedOutDate">
+  <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
+  <mat-datepicker #pickerF></mat-datepicker>
+</mat-form-field>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort >
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark"> ID </th>
+      <td  mat-cell *matCellDef="let row" class="text-dark"> {{row.id}} </td>
+    </ng-container>
+
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header   class="text-dark"> Name </th>
+      <td mat-cell *matCellDef="let row" class="text-dark"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header width="30%"> Status </th>
+      <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color': row.color}" (click)="openCalendar(row)"> {{row.status}}
+
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header width="30%"  class="text-dark"> Status </th>
+      <td mat-cell *matCellDef="let row" > 
+        <button class="statusCss" [ngStyle]="{'background-color': row.color}"  (click)="openCalendar(row)"  > {{row.status}} </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="patient">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="text-dark"> Patients </th>
+      <td mat-cell *matCellDef="let row" class="text-dark">
+        <ul *ngFor="let p of row.listPatient">
+          <li>
+            {{p.nom}} {{p.prenom}}
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header  class="text-dark"> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="accent" (click)="openReservationDialog(row, 'f')">
+          <mat-icon>َadd</mat-icon>
+        </button>
+        <button mat-icon-button (click)="editUf(row)" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deleteUf(row.id)" mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Aucune résultat pour vos recherche "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

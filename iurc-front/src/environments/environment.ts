@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:9001/api/',
-  rootUrl : 'http://localhost:9001/',
+  apiUrl: 'http://localhost:8080/api/',
+  rootUrl : 'http://localhost:8080/',
   supportedLangs: [
     {
       name: 'ar',

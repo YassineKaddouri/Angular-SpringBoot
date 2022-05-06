@@ -49,8 +49,9 @@ import { FiliereModule } from './modules/filiere/filiere.module';
 import { ListRoleComponent } from './modules/role/list-role/list-role.component';
 import { ModifierProfileComponent } from './modules/profile/profile/modifier-profile/modifier-profile.component';
 
-
-
+import { HomeComponent } from './modules/home/home.component';
+import {  NavbarComponent } from './modules/navbar/navbar.component';
+import { ContactComponent } from './modules/contact/contact.component';
 
 
 
@@ -67,8 +68,10 @@ import { ModifierProfileComponent } from './modules/profile/profile/modifier-pro
     MenuItemComponent,
     ListPatientComponent,
     ListRoleComponent,
-    ModifierProfileComponent
-  
+    ModifierProfileComponent,
+    HomeComponent,
+    NavbarComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

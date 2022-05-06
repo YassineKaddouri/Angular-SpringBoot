@@ -4,7 +4,7 @@ import { navigationUid } from "src/app/shared/utils/navigation.utils";
 export const PATIENT_NAVIGATION: NavItem[] = [
     {
         id: navigationUid(),
-        displayName: 'patient',
+        displayName: 'Patient',
         route: "patient",
         iconName: "person",
         hasChildren: true,
@@ -14,7 +14,7 @@ export const PATIENT_NAVIGATION: NavItem[] = [
                 displayName: 'Liste',
                 route: "list",
                 iconName: "list",
-                  requiredRole: "infermier",
+                //  requiredRole: "test",
             },
             // {
             //     id: navigationUid(),

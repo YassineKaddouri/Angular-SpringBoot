@@ -26,6 +26,7 @@ export class UfService {
     return this.http.get(`${this.links.GET_LIST_LINK_c}${data}`,);
   }
   getUFDetails(data): Observable<any> {
+    
     return this.http.get(`${this.links.GET_LIST_LINK_d}${data}`,);
   }
   updateUf(uf: Uf, id: number): Observable<Object>{
@@ -40,9 +41,22 @@ export class UfService {
     return this.http.get(`${this.links.GET_UF_LINK}/${id}`);
   }
 
-  getUfFiliere(id: number): Observable<any> {
-    return this.http.get(`${this.links.GETUF_UF_LINK}/${id}`);
+
+  getState(data:any): Observable<any> {
+    
+    return this.http.post(`${this.links.GET_STATE_LINK}`,data);
+  }
+ 
+  getCountUf(id: Number, dateD): Observable<any> {
+    return this.http.get(`${this.links.GET_COUNT_UF_LINK}/${id}?date=${dateD}`);
   }
 
+  getCountPatient(id: Number, dateD): Observable<any> {
+    return this.http.get(`${this.links.GET_COUNT_PATIENT_LINK}/${id}?date=${dateD}`);
+  }
+
+  getUfFilier(id: Number): Observable<any> {
+    return this.http.get(`${this.links.UF_FIL_LINK}/${id}`);
+  }
 }
 

@@ -8,12 +8,16 @@
       <input matInput placeholder="Nom" id="nom"
       [(ngModel)]="data.name"  name="nomd">
     </mat-form-field>
+    <br>
     <mat-form-field appearance="outline">
       <mat-label>Prenom</mat-label>
       <input matInput placeholder="prenom" id="prenom"
       [(ngModel)]="data.username" name="p" >
     </mat-form-field>
-    <input type="file"  (change)="onChange($event)" enctype="multipart/form-data" multiple/>
+    <form>
+      <input type="file"  (change)="onChange($event)" enctype="multipart/form-data" multiple/>
+      </form>
+   
 </div>
 <div mat-dialog-action [align]="'end'">
  

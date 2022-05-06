@@ -75,6 +75,7 @@ public class MappingServiceImp implements MappingService {
                 .prenom(patient.getPrenom())
                 .dateNessance(patient.getDateNessance())
                 .telephone(patient.getTelephone())
+                .adresse(patient.getAdresse())
                 .build();
     }
 

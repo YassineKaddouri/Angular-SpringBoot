@@ -3,6 +3,6 @@ export class Patient {
     nom: string;
     prenom: string;
     dateNessance: Date;
-    adresse: string;
+    adresse : string;
     telephone: string;
 }

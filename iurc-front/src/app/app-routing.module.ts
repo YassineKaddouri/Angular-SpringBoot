@@ -4,11 +4,17 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { FullLayoutComponent } from './layouts/full-layout/full-layout.component';
+import { ContactComponent } from './modules/contact/contact.component';
+import { HomeComponent } from './modules/home/home.component';
+import { ReservationListComponent } from './modules/reservation/reservation-list/reservation-list.component';
+import { Role } from './ngrx/role/models/role.models';
 import { AuthGuard } from './shared/guard/auth/auth.guard';
 import { ReverseAuthGuard } from './shared/guard/auth/reverse-auth.guard';
 
 const routes: Routes = [
-
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  { path: 'index', component: HomeComponent },
+  {path: 'contact' ,component:ContactComponent},
   {
     path: "",
     component: FullLayoutComponent,
@@ -32,6 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'reservation',
+     
         loadChildren:() => import('./modules/reservation/reservation.module').then(m=>m.ReservationModule)
       },
       {
@@ -53,7 +60,9 @@ const routes: Routes = [
     },
     {
       path:'update-patient/:id',
-      loadChildren:() => import('./modules/patient/patient.module').then(m=>m.PatientModule)
+      loadChildren:() => import('./modules/patient/patient.module').then(m=>m.PatientModule),
+  
+
     }
     ]
        },

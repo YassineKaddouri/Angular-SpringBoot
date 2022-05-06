@@ -14,14 +14,14 @@ export const ROLE_NAVIGATION: NavItem[] = [
                 displayName: 'Liste',
                 route: "list",
                 iconName: "list",
-                  requiredRole: "Admin",
+                 // requiredRole: "Admin",
             },
             {
                 id: navigationUid(),
                 displayName: 'Affectation to RoleUser',
                 route: "addRoleToUser",
                 iconName: "add",
-                  requiredRole: "Admin",
+                 // requiredRole: "Admin",
             },
         ]
     }
