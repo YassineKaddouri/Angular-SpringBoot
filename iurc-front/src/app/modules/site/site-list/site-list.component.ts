@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Site } from 'src/app/ngrx/site/models/site.models';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CreateSiteComponent } from '../create-site/create-site.component';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-site-list',
   templateUrl: './site-list.component.html',
@@ -21,7 +22,9 @@ export class SiteListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   sites: Observable<Site[]>;
-  constructor( private dialog: MatDialog , private siteService: SiteService, private route: Router) { }
+  constructor( private dialog: MatDialog , private siteService: SiteService,
+     private route: Router,
+     private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllSites();
@@ -72,16 +75,24 @@ export class SiteListComponent implements OnInit {
    deleteSite(id : number){
      this.siteService.deleteSite(id).subscribe({
        next:(res)=>{
-         alert("Site supprimer");
-         window.location.reload()
+        //  alert("Site supprimer");
+        this.showSuccess();
+        // window.location.reload()
+       this.getAllSites();
        },
        error:()=>{
-         alert("Erreur lors de suppression")
+        //  alert("Erreur lors de suppression")
+        this.showeError();
        }
 
      })
 
    }
  
-
+   showSuccess(){
+     this.toastr.success('site a ete bien supprime')
+   }
+   showeError(){
+    this.toastr.success("Erreur lors de suppression")
+  }
 }

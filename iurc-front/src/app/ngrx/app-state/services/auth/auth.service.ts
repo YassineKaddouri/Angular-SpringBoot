@@ -101,5 +101,8 @@ export class AuthService {
   createRoleUser(user: Object): Observable<Object> {
     return this.http.post(`${this.links.ROLE_USER_ADD_LINK}`, user);
   }
+  deleteUser(id: number): Observable<object>{
+    return this.http.delete(`${this.links.DELETE_USER_LINK}/${id}`);
+  }
 }
 

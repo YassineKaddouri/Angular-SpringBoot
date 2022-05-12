@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/shared/service_dialog/notification.
 import { Filiere } from 'src/app/ngrx/filiere/models/filiere.models';
 import { FiliereService } from 'src/app/ngrx/filiere/services/filiere.service';
 import { Uf } from 'src/app/ngrx/uf/models/uf.models';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-uf',
   templateUrl: './create-uf.component.html',
@@ -22,6 +23,7 @@ uf : Uf;
      @Inject(MAT_DIALOG_DATA) public editData : any,
      private dialogRef: MatDialogRef<CreateUfComponent>,
      private notificationService: NotificationService,
+     private toastr: ToastrService,
      private filiereService : FiliereService) { }
 
   ngOnInit(): void {
@@ -88,19 +90,23 @@ uf : Uf;
         
         } : {
           ...this.ufForm.value,
-          filiere: {
+          filiere: {  
               id: this.ufForm.get('filiere').value
             }
   
         };
         this.ufService.createUf(uf).subscribe({
           next: (res) => {
-            this.notificationService.success('UF ajouter avec succèss');
+            // this.notificationService.success('UF ajouter avec succèss');
+            this.showToast();
             this.ufForm.reset();
             this.dialogRef.close('enregistrer');
+        
+          
           },
           error: () => {
-            alert("Erreur lors d'ajout de réservation")
+            // alert("Erreur lors d'ajout de réservation")
+            this.showError();
           }
         })
       }
@@ -109,7 +115,12 @@ uf : Uf;
     }
    
   }
-
+   showToast(){
+     this.toastr.success('UF ajouter avec succèss');
+   }
+   showError(){
+    this.toastr.error("Erreur lors d'ajout de uf");
+  }
   // Modifier site 
   updateUf(){
     this.ufService.updateUf(this.ufForm.value, this.editData.id).subscribe({

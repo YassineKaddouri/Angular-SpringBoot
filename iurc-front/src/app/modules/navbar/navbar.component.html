@@ -77,7 +77,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'/annonce'">
-          <i class="now-ui-icons ui-1_calendar-60"></i>
+          <i class="fa-solid fa-address-book"></i>
           <p>Annonces</p>
         </a>
       </li>
@@ -92,14 +92,16 @@
     </ul>
       <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
     
-      <li  class="nav-item cursor ">
-        <a class="nav-link">
+      <li  class="nav-item ">
+        <!-- <a   (click)="OnDeconnexion()" class="nav-link" *ngIf="isAuthentificated()"> -->
+          <a  class="nav-link">
           <i class="now-ui-icons media-1_button-power"></i>
           <p>Déconnecter</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/login'">
+        <!-- <a class="nav-link" [routerLink]="'/login'" *ngIf="!isAuthentificated()"> -->
+          <a class="nav-link" [routerLink]="'/login'">
           <i class="now-ui-icons business_badge"></i>
           <p>Authentification</p>
         </a>

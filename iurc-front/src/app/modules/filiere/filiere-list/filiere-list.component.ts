@@ -8,6 +8,7 @@ import { CreateFiliereComponent } from '../create-filiere/create-filiere.compone
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
 import { NotificationService } from 'src/app/shared/service_dialog/notification.service';
 import { DialogDeleteService } from 'src/app/shared/service_dialog/dialog-delete.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-filiere-list',
@@ -18,11 +19,12 @@ export class FiliereListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = [ 'name',  'action'];
+  displayedColumns: string[] = ['id' ,'name',  'action'];
   dataSource: MatTableDataSource<any>;
   constructor(private filiereService : FiliereService, private dialog: MatDialog,
     private dialogDeleteService : DialogDeleteService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private toastr: ToastrService,
     ) { }
 
   ngOnInit(): void {
@@ -62,11 +64,14 @@ export class FiliereListComponent implements OnInit {
         if(res){
           this.filiereService.deleteFiliere(id).subscribe({
             next:(res)=>{
-              window.location.reload();
-              this.notificationService.success('Filière supprimer!')
+              //window.location.reload();
+              this.getAllFilieres();
+              //this.notificationService.success('Filière supprimer!')
+              this.showSuccess();
             },
             error:()=>
-            alert("erreur")
+           // alert("erreur")
+           this.showeError()
           })
           
         }
@@ -101,5 +106,10 @@ export class FiliereListComponent implements OnInit {
   }
 
 
- 
+  showSuccess(){
+    this.toastr.success('site a ete bien supprime')
+  }
+  showeError(){
+   this.toastr.success("Erreur lors de suppression")
+ }
 }

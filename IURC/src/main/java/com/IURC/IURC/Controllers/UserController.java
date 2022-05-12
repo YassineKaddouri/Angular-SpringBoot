@@ -19,6 +19,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -105,7 +106,22 @@ public class UserController {
         return allUsersDto;
     }
 
+    // delete role rest api
+    @DeleteMapping("/role/{id}")
+    public ResponseEntity<String> deleteRole(@PathVariable("id") long id){
 
+
+        roleService.deleteRole(id);
+
+        return new ResponseEntity<String>("role deleted successfully!.", HttpStatus.OK);
+    }
+
+   //delete user rest api
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<String>deleteUser(@PathVariable("id") long id){
+        userService.deleteUser(id);
+        return new ResponseEntity<String>("user deleted successfully",HttpStatus.OK);
+    }
 
     @GetMapping("login/{username}")
     public User getUserByUsername(@PathVariable("username") String username){
@@ -127,6 +143,8 @@ public class UserController {
         return ResponseEntity.ok(updateUsers);
 
     }
+
+
 }
 
 

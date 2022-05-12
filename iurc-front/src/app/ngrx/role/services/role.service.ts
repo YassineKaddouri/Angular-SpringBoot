@@ -16,6 +16,8 @@ export class RoleService {
     return this.http.post(`${this.links.ROLE_ADD_LINK}`, role);
   }
 
-
+  deleteRole(id: number): Observable<object>{
+    return this.http.delete(`${this.links.DELETE_ROLE_LINK}/${id}`);
+  }
 }
 

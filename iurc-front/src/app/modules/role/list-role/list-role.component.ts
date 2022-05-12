@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/ngrx/role/models/role.models';
 import { RoleService } from 'src/app/ngrx/role/services/role.service';
+import { DialogDeleteService } from 'src/app/shared/service_dialog/dialog-delete.service';
+import { NotificationService } from 'src/app/shared/service_dialog/notification.service';
 import { CreateRoleComponent } from '../create-role/create-role.component';
 
 @Component({
@@ -22,15 +26,25 @@ export class ListRoleComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
  // pateints: Observable<Patient[]>;
+ roleForm !: FormGroup;
   roles: Role[];
   constructor( private dialog: MatDialog , 
     private roleService: RoleService,
     private router: Router,
-    //private toastr: ToastrService
+    private dialogDeleteService : DialogDeleteService,
+    private notificationService: NotificationService,
+    private toastr: ToastrService,
+    // @Inject(MAT_DIALOG_DATA) public editData : any,
+    // private dialogRef: MatDialogRef<ListRoleComponent>,
+    private formBuilder : FormBuilder,
      ) { }
 
 
   ngOnInit(): void {
+    this.roleForm = this.formBuilder.group({
+      name : ['',Validators.required]
+
+    });
     this.getRole();
   }
   getRole(){
@@ -68,4 +82,29 @@ export class ListRoleComponent implements OnInit {
       }
     })
   }
+  //DELETE
+  deleteRole(id : number){
+    this.dialogDeleteService.openConfirmDialog('Êtes-vous sûr de vouloir supprimer?')
+.afterClosed().subscribe(res =>{
+  if(res){
+    this.roleService.deleteRole(id).subscribe({
+      next:(res)=>{
+        //alert("delete")
+        // this.notificationService.success('Reservation supprimé!')
+        
+      }
+    })
+     window.location.reload();
+    this.getRole()
+    this.showtoast()
+  }
+});
+
 }
+
+showtoast(){
+  this.toastr.success("jjjj")
+}
+}
+
+  

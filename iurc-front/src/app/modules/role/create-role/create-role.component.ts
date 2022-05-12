@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/ngrx/role/models/role.models';
 import { RoleService } from 'src/app/ngrx/role/services/role.service';
 
@@ -15,6 +16,7 @@ role: Role = new Role();
   actionBtn : string = "Enregistrer"
   constructor(private formBuilder : FormBuilder ,
      private roleService: RoleService, 
+     private toastr: ToastrService,
      @Inject(MAT_DIALOG_DATA) public editData : any,
      private dialogRef: MatDialogRef<CreateRoleComponent>) { }
 
@@ -38,7 +40,8 @@ role: Role = new Role();
         this.roleService.createRole(this.roleForm.value).subscribe({
           next:(res) =>{
             console.log(res);
-            alert("Role ajouter avec succès");
+            // alert("Role ajouter avec succès");
+            this.showToast();
             this.roleForm.reset();
             this.dialogRef.close('enregistrer');
           },
@@ -48,11 +51,13 @@ role: Role = new Role();
         })
       }
     }
-   
-  }
+}
   onNoClick(): void {
     this.dialogRef.close();
   }
+  showToast(){
+    this.toastr.success("Role ajouter avec succès")
 
 
+}
 }

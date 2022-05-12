@@ -17,7 +17,9 @@ export class MailService {
   createMails(mail: Object): Observable<Object> {
     return this.http.post(`${this.links.MAIL_ADD_LINK}`, mail);
   }
-
+  getMailList(): Observable<any> {
+    return this.http.get(`${this.links.GET_LIST_LINK}`);
+  }
   // updateFiliere(filiere : Filiere, id: number): Observable<Object>{
   //   return this.http.put(`${this.links.UPDATE_FIL_LINK}/${id}`, filiere);
   // }

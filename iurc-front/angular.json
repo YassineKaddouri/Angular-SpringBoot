@@ -104,8 +104,10 @@
 						"styles": [
 							"node_modules/ngx-toastr/toastr.css",
 							"src/styles.css",
-							"./src/styles.scss",
-							"node_modules/jquery/dist/jquery.min.js"
+							"./src/styles.scss"
+						
+					
+
 						],
 						"scripts": []
 					}

@@ -13,5 +13,6 @@ RUN npm install
 
 ADD . /iurc-front/
 EXPOSE 4200
+RUN npm run build
 
 CMD ["ng","serve", "--host", "0.0.0.0", "--port", "4200" , "--poll","2000"]

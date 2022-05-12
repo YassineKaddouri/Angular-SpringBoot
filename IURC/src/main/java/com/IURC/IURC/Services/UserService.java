@@ -2,6 +2,7 @@ package com.IURC.IURC.Services;
 
 import com.IURC.IURC.Entities.Role;
 import com.IURC.IURC.Entities.User;
+import com.IURC.IURC.Exceptions.ResourceNotFoundException;
 import com.IURC.IURC.Repositories.RoleRepository;
 import com.IURC.IURC.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -86,6 +87,12 @@ public class UserService implements UserDetailsService {
     public Optional<User> getById(Long id) {
         return userRepository.findById(id);
     }
+    public void deleteUser(long id) {
 
+        userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("User", "Id", id));
+        userRepository.deleteById(id);
+
+    }
 
 }

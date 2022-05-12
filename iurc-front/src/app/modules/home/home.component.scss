@@ -1,11 +1,29 @@
 
-body{
-//  background-image: url("/../../assets/images/imagesite.jpg");
-  background-position: center center;
-  background-size: cover;
-  width: 100%;
- }
+// .myclass{
+// //   //background-image: url("/../../assets/images/imagesite.jpg");
+//   //  background-position: center center;
+//   //  background-size: cover;
+//   //  width: 100%;  
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
 
+// }
+// .myclass {
+
+
+//      background-position: center center;
+//   background-size: cover;
+//   height:100% ;
+//   img {
+//      background-position: center center;
+//   background-size: cover;
+//   width: 100%; 
+
+  
+//   }
+  
+//   }
 .centered2{
   position: absolute;
   top: 55%;
@@ -28,10 +46,4 @@ h3{
   font-family: 'Times New Roman', Times, serif;
 
   line-height: 1em;
-}
-#introCarousel,
-.carousel-inner,
-.carousel-item,
-.carousel-item.active {
-  height: 100vh;
 }

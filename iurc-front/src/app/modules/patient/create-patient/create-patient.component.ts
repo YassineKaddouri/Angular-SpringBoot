@@ -50,7 +50,7 @@ if(this.patientForm.valid){
     this.patientService.createPatient(this.patient).subscribe(
       data => {
         console.log(data);
-        this.dialogRef.close(this.patient);
+        this.dialogRef.close('enregistrer');
         this.showToaster();  
         //this.location.back()
     //  window.location.reload();        

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { SiteService } from 'src/app/ngrx/site/services/site.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-site',
   templateUrl: './create-site.component.html',
@@ -13,6 +14,7 @@ export class CreateSiteComponent implements OnInit {
   actionBtn : string = "Enregistrer"
   constructor(private formBuilder : FormBuilder ,
      private siteService: SiteService, 
+     private toastr: ToastrService,
      @Inject(MAT_DIALOG_DATA) public editData : any,
      private dialogRef: MatDialogRef<CreateSiteComponent>) { }
 
@@ -42,12 +44,14 @@ export class CreateSiteComponent implements OnInit {
       if(this.siteForm.valid){
         this.siteService.createSite(this.siteForm.value).subscribe({
           next:(res) =>{
-            alert("Site ajouter avec succès");
+           // alert("Site ajouter avec succès");
+           this.showSuccess();
             this.siteForm.reset();
             this.dialogRef.close('enregistrer');
           },
           error:()=>{
-            alert("Erreur lors d'ajout de site")
+            // alert("Erreur lors d'ajout de site")
+            this.showeError();
           }
         })
       }
@@ -78,5 +82,10 @@ export class CreateSiteComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
+  showSuccess(){
+    this.toastr.success('site a ete bien supprime')
+  }
+  showeError(){
+   this.toastr.success("Erreur lors de suppression")
+ }
 }

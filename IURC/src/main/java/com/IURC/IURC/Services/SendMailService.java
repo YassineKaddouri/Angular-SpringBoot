@@ -1,6 +1,7 @@
 package com.IURC.IURC.Services;
 
 import com.IURC.IURC.Entities.Mail;
+import com.IURC.IURC.Entities.Patient;
 import com.IURC.IURC.Repositories.MailRepository;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -23,6 +25,12 @@ public class SendMailService {
     private JavaMailSender javaMailSender;
     @Autowired
     private MailRepository mailRepository;
+
+    // get all patients
+
+    public List<Mail> getAllMails() {
+        return mailRepository.findAll();
+    }
 
     public long sendMail(Mail mail) throws MailException{
        // SimpleMailMessage message = new SimpleMailMessage();

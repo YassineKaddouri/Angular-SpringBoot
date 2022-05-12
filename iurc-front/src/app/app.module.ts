@@ -53,6 +53,8 @@ import { HomeComponent } from './modules/home/home.component';
 import {  NavbarComponent } from './modules/navbar/navbar.component';
 import { ContactComponent } from './modules/contact/contact.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './modules/footer/footer/footer.component';
 
 
 
@@ -71,7 +73,10 @@ import { ContactComponent } from './modules/contact/contact.component';
     ModifierProfileComponent,
     HomeComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent,
+    ListRoleComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -111,6 +116,7 @@ import { ContactComponent } from './modules/contact/contact.component';
     MatSortModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgbModule,
     /** */
 
 

@@ -11,11 +11,27 @@ export const ROLE_NAVIGATION: NavItem[] = [
         children: [
             {
                 id: navigationUid(),
-                displayName: 'Liste',
+                displayName: 'Liste Role',
                 route: "list",
                 iconName: "list",
                  // requiredRole: "Admin",
             },
+            {
+                id: navigationUid(),
+                displayName: 'Liste User',
+                route: "list user",
+                iconName: "list",
+                 // requiredRole: "Admin",
+            },
+            {
+                id: navigationUid(),
+                displayName: 'Liste Email',
+                route: "list email",
+                iconName: "list",
+                 // requiredRole: "Admin",
+            },
+           
+           
             {
                 id: navigationUid(),
                 displayName: 'Affectation to RoleUser',

@@ -270,7 +270,7 @@ export class UfListComponent implements OnInit {
   editUf(row: any) {
     console.log(row)
     this.dialog.open(UpdateUfComponent, {
-      width: '30%',
+      panelClass: 'my-dialog-class-css',
       data: row,
 
     }).afterClosed().subscribe(val => {  /***     whenever we would like to update a uf its gonna refresh by itself */
@@ -288,13 +288,16 @@ export class UfListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+/***     tous ça pourque la fenetre va actualiser lors d'ajout */
   openDialog() {
     this.dialog.open(CreateUfComponent, {
       width: '30%'
-    }).afterClosed().subscribe(val => {        /***     tous ça pourque la fenetre va actualiser lors d'ajout */
-      this.getUfs();
-    })
+    }).afterClosed().subscribe(val => {  
+      if(val == 'enregistrer'){
+        this.getUfs();
+      }
+    }) 
+   
   }
 
   //DELETE
@@ -326,7 +329,8 @@ export class UfListComponent implements OnInit {
 
   openReservationDialog(uf, action) {
     this.dialog.open(CreateReservationComponent, {
-      width: '30%',
+      // width: '30%',
+      panelClass: 'my-dialog-class-css',
       data: { selectedUf: uf, action: action }
     }).afterClosed().subscribe(val => {
       this.getUfs()   /***     tous ça pourque la fenetre va actualiser lors d'ajout */

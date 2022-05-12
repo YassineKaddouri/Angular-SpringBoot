@@ -24,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorIntlFrensh } from 'src/app/shared/MatPaginatorIntlFrensh';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { RoleToUserComponent } from './role-to-user/role-to-user.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ListEmailComponent } from './list-email/list-email.component';
 
 
 
@@ -36,7 +38,9 @@ import { RoleToUserComponent } from './role-to-user/role-to-user.component';
   
             CreateRoleComponent,
              RoleToUserComponent,
-             RoleToUserComponent
+             RoleToUserComponent,
+             ListUserComponent,
+             ListEmailComponent
   ],
   imports: [
     CommonModule,

@@ -12,4 +12,5 @@ export class RoleLinks {
     // public readonly GETID_LIST_LINK = 'http://localhost:8080/patient';
     // public readonly UPDATE_LIST_LINK = 'http://localhost:8080/patient';
     // public readonly DELETE_LIST_LINK = 'http://localhost:8080/patient';
+    public readonly DELETE_ROLE_LINK = 'http://localhost:8080/iurc/role';
 }

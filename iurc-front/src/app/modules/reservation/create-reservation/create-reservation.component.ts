@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/shared/service_dialog/notification.
 import { FiliereService } from 'src/app/ngrx/filiere/services/filiere.service';
 import { DatePipe } from '@angular/common';
 import { CreatePatientComponent } from '../../patient/create-patient/create-patient.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-reservation',
@@ -31,6 +32,7 @@ export class CreateReservationComponent implements OnInit {
   selectedFilier;
   selectedUf;
   selectedPatient;
+  options;
   addedPatient: MatDialogRef<CreatePatientComponent>;
   constructor(private formBuilder : FormBuilder ,
     private reservationService: ReservationService, 
@@ -40,6 +42,7 @@ export class CreateReservationComponent implements OnInit {
     private filiereService: FiliereService,
     private notificationService: NotificationService,
     private dialog: MatDialog,
+    private toastr: ToastrService,
     private datePipe: DatePipe) { }
 
   ngOnInit(): void {
@@ -114,7 +117,8 @@ export class CreateReservationComponent implements OnInit {
                 {
                   alert('Ce patient a une reservatoin dans cette date ')
                 }else {
-                  alert('Uf est déja reservée dans cette date ')
+                   alert('Uf est déja reservée dans cette date ')
+                //  this.showToaster();
                 }
               }
             )
@@ -127,7 +131,11 @@ export class CreateReservationComponent implements OnInit {
     // }
    
   }
+  // showToaster(){
+  //   panelClass:'my-dialog-class-css'
+  //   this.toastr.success("Uf est déja reservée dans cette date");
 
+  // }
   updateReservation(){
     let reservation = this.reservation ? { ...this.reservation,
       ...this.reservationForm.value,
