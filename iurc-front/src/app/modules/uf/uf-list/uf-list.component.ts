@@ -17,6 +17,7 @@ import { CreateReservationComponent } from '../../reservation/create-reservation
 import { UfCalendarComponent } from '../uf-calendar/uf-calendar.component';
 import { ReservationService } from 'src/app/ngrx/reservation/services/reservation.service';
 import { UpdateUfComponent } from '../update-uf/update-uf.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-uf-list',
@@ -46,7 +47,8 @@ export class UfListComponent implements OnInit {
     private notificationService: NotificationService,
     private datePipe: DatePipe,
     private patientService: PatientService,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -308,13 +310,16 @@ export class UfListComponent implements OnInit {
           this.ufService.deleteUf(id).subscribe({
             next: (res) => {
               this.ngOnInit();
-              this.notificationService.success("Uf supprimer")
+              // this.notificationService.success("Uf supprimer")
+              this.showToast();
               this.getUfs()
             }, error: () =>
-              alert("erreur")
+              // alert("erreur")
+              this.showError()
           })
         }
       });
+    
   }
   checkDate(event) {
     if (event) {
@@ -426,4 +431,11 @@ export class UfListComponent implements OnInit {
       }
     })
   }
+  showToast(){
+    this.toastr.success("Uf supprimer")
+    }
+    showError(){
+      this.toastr.success("Error supprimer")
+      }
+
 }

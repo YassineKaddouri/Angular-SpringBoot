@@ -104,7 +104,7 @@ export class CreateReservationComponent implements OnInit {
              
                   this.reservationService.createReservation(reservation).subscribe({
                     next:(res) =>{
-                      this.notificationService.success('Reservation ajouter avec succès');
+                      this.toastr.success('Reservation ajouter avec succès')
                       this.reservationForm.reset();
                       this.dialogRef.close('enregistrer');
                     },
@@ -117,8 +117,8 @@ export class CreateReservationComponent implements OnInit {
                 {
                   alert('Ce patient a une reservatoin dans cette date ')
                 }else {
-                   alert('Uf est déja reservée dans cette date ')
-                //  this.showToaster();
+                  //  alert('Uf est déja reservée dans cette date ')
+                  this.showToaster();
                 }
               }
             )
@@ -131,11 +131,11 @@ export class CreateReservationComponent implements OnInit {
     // }
    
   }
-  // showToaster(){
-  //   panelClass:'my-dialog-class-css'
-  //   this.toastr.success("Uf est déja reservée dans cette date");
+  showToaster(){
+    panelClass:'my-dialog-class-css'
+    this.toastr.success("Uf est déja reservée dans cette date");
 
-  // }
+  }
   updateReservation(){
     let reservation = this.reservation ? { ...this.reservation,
       ...this.reservationForm.value,

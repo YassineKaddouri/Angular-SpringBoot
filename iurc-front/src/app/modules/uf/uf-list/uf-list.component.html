@@ -24,22 +24,23 @@
 
 <div class="parent">
   <mat-form-field  class="x"  style="width: 12rem ;color:brown;">
-    <mat-label>Date Entrée</mat-label>
+    <mat-label><strong>Date Entrée</strong></mat-label>
     <input [matDatepicker]="pickerD" matInput placeholder="date Debut" [(ngModel)]="selectedDate"
       (ngModelChange)="checkDate($event)">
     <mat-datepicker-toggle matSuffix [for]="pickerD"></mat-datepicker-toggle>
     <mat-datepicker #pickerD></mat-datepicker>
   </mat-form-field>
 <mat-form-field  class="x"  style="width: 12rem">
-  <mat-label>Date Sortie</mat-label>
+  <mat-label><strong>Date Sortie</strong></mat-label>
   <input [matDatepicker]="pickerF" matInput placeholder="date Fin" [(ngModel)]="selectedOutDate">
   <mat-datepicker-toggle matSuffix [for]="pickerF"></mat-datepicker-toggle>
   <mat-datepicker #pickerF></mat-datepicker>
 </mat-form-field>
 
-<button mat-raised-button color="success" (click)="getStatus()">
+<button mat-raised-button (click)="getStatus()" class="search">
   <mat-icon>search</mat-icon> 
 </button>
+
 </div>
 
 
@@ -86,7 +87,7 @@
       <td mat-cell *matCellDef="let row" class="text-dark">
         <div *ngFor="let p of row.listPatient">
           <p>
-            - {{p.nom}} {{p.prenom}}
+            -{{p.nom}} {{p.prenom}}
           </p>
         </div>
       </td>

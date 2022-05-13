@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Filiere } from 'src/app/ngrx/filiere/models/filiere.models';
 import { FiliereService } from 'src/app/ngrx/filiere/services/filiere.service';
 import { Site } from 'src/app/ngrx/site/models/site.models';
@@ -19,6 +20,7 @@ export class UpdateUfComponent implements OnInit {
   ufForm !: FormGroup;
   actionBtn: string = "Modifier"
   uf : Uf;
+  
   filiere: Filiere;
   filiers: Filiere[];
   sites: Site[];
@@ -29,6 +31,7 @@ export class UpdateUfComponent implements OnInit {
     private dialogRef: MatDialogRef<UpdateUfComponent>,
     private notificationService: NotificationService,
     private filiereService: FiliereService,
+    private toastr: ToastrService,
     private siteService: SiteService) { }
 
   ngOnInit(): void {
@@ -69,14 +72,24 @@ export class UpdateUfComponent implements OnInit {
     };
     this.ufService.updateUf(uf,this.editData.id).subscribe({
       next: (res) => {
-        this.notificationService.success('UF Modifié');
+        // this.notificationService.success('UF Modifié');
+        this.showToast();
         this.ufForm.reset();
         this.dialogRef.close('modifier');
-        window.location.reload();
+        //window.location.reload();
+        this.getAllFilieres();
       },
       error: () => {
-        alert("Erreur lors modifier uf")
+        // alert("Erreur lors modifier uf")
+        this.showError()
       }
     })
   }
+  showToast(){
+    this.toastr.success("UF Modifié")
+    }
+    showError(){
+      this.toastr.success("Erreur lors modifier uf")
+      }
+
 }

@@ -11,6 +11,7 @@ import { CreateReservationComponent } from '../create-reservation/create-reserva
 import { UpdateReservationComponent } from '../update-reservation/update-reservation.component';
 import { DialogDeleteService } from 'src/app/shared/service_dialog/dialog-delete.service';
 import { NotificationService } from 'src/app/shared/service_dialog/notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reservation-list',
@@ -28,6 +29,7 @@ export class ReservationListComponent implements OnInit {
   
   constructor(private dialog: MatDialog , private reservationService: ReservationService, private route: Router,
     private dialogDeleteService : DialogDeleteService,
+    private toastr: ToastrService,
     private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -92,8 +94,10 @@ export class ReservationListComponent implements OnInit {
     this.reservationService.deleteReservation(id).subscribe({
       next:(res)=>{
         //alert("delete")
-        window.location.reload();
-        this.notificationService.success('Reservation supprimé!')
+       // window.location.reload();
+       // this.notificationService.success('Reservation supprimé!')
+       this.showToast();
+       this.getAllReservations();
       },
       error:()=>
       alert("erreur")
@@ -111,5 +115,12 @@ export class ReservationListComponent implements OnInit {
 //     })
 // window.location.reload()
   }
+  showToast(){
+    this.toastr.success("Reservation supprimé!")
+    }
+    showError(){
+      this.toastr.success("Error supprimer")
+      }
+
 
 }
