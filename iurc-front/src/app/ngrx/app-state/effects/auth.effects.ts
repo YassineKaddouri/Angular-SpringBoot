@@ -30,7 +30,8 @@ export class AuthEffects {
           localStorage.setItem('roles',AuthService.getDecodedAccessToken(loginResponse.access_token).roles);
           loginResponse.roles=AuthService.getDecodedAccessToken(loginResponse.access_token).roles;
           console.log(loginResponse.name);
-        this.router.navigateByUrl('/profile/show');
+         this.router.navigateByUrl('/profile/show');
+    
         this.matSnackBar.open("Authentification terminée avec succès", "Fermer", {
                         duration: 6000,
                     });

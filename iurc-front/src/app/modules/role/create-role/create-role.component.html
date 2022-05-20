@@ -12,5 +12,5 @@
 </div>
 <div mat-dialog-action [align]="'end'">
   <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
-  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addSite()">{{actionBtn}}</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addSite()" (click)="showToast()">{{actionBtn}}</button>
 </div>

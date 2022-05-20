@@ -52,7 +52,8 @@ export class UfListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUfs()
+    this.getUfs();
+    this.getAllUfs();
   }
   getAllUfs() {
     this.ufService.getUFList().subscribe({

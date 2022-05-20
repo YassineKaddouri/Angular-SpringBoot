@@ -70,15 +70,15 @@
   <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
     <ul class="navbar-nav ml-auto" >
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/index'">
+        <a class="nav-link" [routerLink]="'/reservation/list'">
           <i class="now-ui-icons business_bank"></i>
           <p >Acceuil</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/annonce'">
+        <a class="nav-link" [routerLink]="'/login'">
           <i class="fa-solid fa-address-book"></i>
-          <p>Annonces</p>
+          <p>Authentification</p>
         </a>
       </li>
       <li class="nav-item">
@@ -90,23 +90,7 @@
     
 
     </ul>
-      <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-    
-      <li  class="nav-item ">
-        <!-- <a   (click)="OnDeconnexion()" class="nav-link" *ngIf="isAuthentificated()"> -->
-          <a  class="nav-link">
-          <i class="now-ui-icons media-1_button-power"></i>
-          <p>Déconnecter</p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link" [routerLink]="'/login'" *ngIf="!isAuthentificated()"> -->
-          <a class="nav-link" [routerLink]="'/login'">
-          <i class="now-ui-icons business_badge"></i>
-          <p>Authentification</p>
-        </a>
-      </li>
-      </ul>
+  
   </div>
   </div>
 </nav>

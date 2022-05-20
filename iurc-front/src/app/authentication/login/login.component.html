@@ -4,10 +4,11 @@
 <head>
 </head>
 <body>
+    <app-navbar></app-navbar>  
 <div class="main-div">
     <mat-card class="relative ring-4 ring-crossdock-primary-500 ring-opacity-50">
         <mat-card-header>
-            <mat-card-title class="mb-4 pl-4 border-l-4 border-crossdock-warn-500 text-crossdock-warn-500" >
+            <mat-card-title class="mb-4 pl-4 border-l-4 border-crossdock-primary-500 text-crossdock-500" style="color: #0082c8;">
                   Authentification
             </mat-card-title>
         </mat-card-header>
@@ -25,14 +26,14 @@
                 </mat-form-field>
             </mat-card-content>
             <mat-card-actions class="flex justify-center">
-                <button mat-raised-button type="submit" color="warn"
+                <button mat-raised-button type="submit" style="background-color: #0082c8;"
                     class="text-white px-10 text-lg py-2">Connecter</button>
                   
             </mat-card-actions>
             
              <mat-card-actions class="flex justify-center">
            
-                    <button (click)="signup()"  class="text-1xl  flex justify-center text-crossdock-warn-500">Créer un compte</button>
+                    <button (click)="signup()"  class="text-1xl  flex justify-center text-crossdock-500" style="color:#0082c8">Créer un compte</button>
             </mat-card-actions>
       
           

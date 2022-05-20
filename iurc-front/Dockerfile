@@ -6,7 +6,6 @@ WORKDIR /iurc-front
 
 RUN npm install -g @angular/cli --force
 
-
 COPY package.json .
 COPY package-lock.json .
 RUN npm install 

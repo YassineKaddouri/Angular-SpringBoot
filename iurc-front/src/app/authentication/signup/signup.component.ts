@@ -9,7 +9,8 @@ import { AuthPageActions } from '../../ngrx/app-state/actions/auth';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  
+  hide: boolean = true;
+
   signupForm: FormGroup;
   constructor(private fb: FormBuilder, private store : Store) {
     this.signupForm = this.fb.group({

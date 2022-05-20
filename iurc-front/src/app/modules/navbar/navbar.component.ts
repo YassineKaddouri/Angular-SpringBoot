@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/ngrx/app-state/models/user.model';
 import { AuthService } from 'src/app/ngrx/app-state/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,8 @@ import { AuthService } from 'src/app/ngrx/app-state/services/auth/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  @Input()user : User ;
+  @Output() logout : EventEmitter<void> = new EventEmitter();
   constructor(
     private userService: AuthService,
     private router:Router
@@ -16,14 +19,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   // isAuthentificated()
   // {
   //   return this.userService.login;
   // }
-  // OnDeconnexion() {
-  //   console.log("Deconnexion");
-  //   this.userService.signup;
-  //   this.router.navigateByUrl('/index');
+  emitLogout(){
+    this.logout.emit();
+  }
+  OnDeconnexion() {
+    this.router.navigateByUrl('/login');
+    console.log("Deconnexion");
+    this.userService.signup;
 
-  // }
+  }
 }
