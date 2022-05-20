@@ -115,7 +115,7 @@ export class CreateReservationComponent implements OnInit {
                 }
                 else if(resP !== 0)
                 {
-                  alert('Ce patient a une reservatoin dans cette date ')
+                  this.toastr.success('Ce patient a une reservatoin dans cette date ')
                 }else {
                   //  alert('Uf est déja reservée dans cette date ')
                   this.showToaster();
@@ -205,7 +205,7 @@ export class CreateReservationComponent implements OnInit {
   openDialogg(){
 
     this.addedPatient = this.dialog.open(CreatePatientComponent, {
-      //panelClass: 'my-dialog-class-css'
+      panelClass: 'my-dialog-class-css'
      // width: '30%'
     });
 

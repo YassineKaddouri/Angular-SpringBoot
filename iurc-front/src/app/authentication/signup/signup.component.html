@@ -38,7 +38,7 @@
                 <mat-form-field appearance="outline" class="w-full">
                     <mat-label >Password</mat-label>
                     <input matInput type="password"  formControlName="password" class="form-control " placeholder="Mot de passe" name="password"
-                    [ngClass]="{ 'is-invalid':  f.password.invalid  &&  f.password.errors && f.password.touched && f.password.dirty }">
+                    [ngClass]="{ 'is-invalid':  f.password.invalid  &&  f.password.errors && f.password.touched && f.password.dirty }"onclick="myFunction()">
                     <mat-error *ngIf="f.password.invalid" class="invalid-feedback">
                         
                         <div *ngIf="f.password.errors.required ">
@@ -57,6 +57,7 @@
                             {{hide ? 'visibility_off' : 'visibility'}}
                         </mat-icon>
                     </button>
+                    <!-- <input type="checkbox" onclick="myFunction()"> -->
                 </mat-form-field>
                 <!-- <label>image_Profile</label>
                 <input type="file"  (change)="onChange($event)" /> -->
@@ -94,6 +95,16 @@
 
 
 </div>
-
+<!-- <script>
+function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+  </script> -->
+  
 </body>
 </html>

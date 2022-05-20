@@ -60,7 +60,10 @@ export class ListPatientComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(CreatePatientComponent, {
-      width: '30%'
+      // width: '30%'
+  
+      panelClass: 'my-dialog-class-css',
+
     }).afterClosed().subscribe(val=>{        
       if(val == 'enregistrer'){
         this.getPatient();

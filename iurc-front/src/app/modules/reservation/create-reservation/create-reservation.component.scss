@@ -21,3 +21,16 @@ mat-form-field {
    left: auto!important;
    margin: 0.5em
    }
+   ::ng-deep .my-dialog-class-css {
+    mat-dialog-container {
+        margin: auto;
+   
+   }
+    @media only screen and (max-width: 760px) {
+         mat-dialog-container{
+            width: 100%;
+           
+        }
+    }
+   
+ }

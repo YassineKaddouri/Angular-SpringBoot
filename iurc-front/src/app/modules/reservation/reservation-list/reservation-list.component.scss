@@ -32,3 +32,16 @@ td{
   font-size:100%;
 
 }
+::ng-deep .my-dialog-class-css {
+  mat-dialog-container {
+      margin: auto;
+   width: 80%;
+ }
+  @media only screen and (max-width: 760px) {
+       mat-dialog-container{
+          width: 100%;
+         
+      }
+  }
+ 
+}
